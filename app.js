@@ -12,8 +12,14 @@ app.use(express.static("public"));
 app.set('view engine', 'ejs');
 
 
+const problemsStats =  {total : 0, OK:0 , WRONG_ANSWER:0, TIME_LIMIT_EXCEEDED: 0, RUNTIME_ERROR: 0, MEMORY_LIMIT_EXCEEDED : 0, other : 0};
+
+
 app.get("/", (req, res)=>{
     res.sendFile(__dirname + "/index.html");    
+})
+app.get("/stats" , (req,res)=>{
+    res.render("stats", {data: problemsStats});
 })
 
 app.post("/", (req, res)=>{
@@ -33,21 +39,23 @@ app.post("/", (req, res)=>{
         response.on("end", ()=>{
             try {
                 const userData = JSON.parse(data);
-                const problemsStats =  {total : 0, other : 0};
-                
+                for (let key in problemsStats) {
+                    problemsStats[key] = 0;
+                }
             
                 for(let i = 0; userData.result.length>i; i++){
                     var current = userData.result[i].verdict;
                     problemsStats["total"]++;
                     if (current in problemsStats) problemsStats[current]++;
-                    else  problemsStats[current] = 1;                      
+                    else  problemsStats.other ++;                      
                 }
-                problemsStats.other = problemsStats.total - (problemsStats.WRONG_ANSWER + problemsStats.OK + problemsStats.TIME_LIMIT_EXCEEDED + problemsStats.MEMORY_LIMIT_EXCEEDED + problemsStats.RUNTIME_ERROR)              
-                res.render("home", {data: problemsStats});
-                  
-
+                res.redirect("/stats");
+               
+               
+                
             } catch (error) {
                 console.log(`Error parsing JSON: ${error}`);
+                res.redirect("/")
             }
         });
     });

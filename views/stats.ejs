@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>CodeForces Analyzer</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='css/style.css'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container m-auto my-2">
+        <div class="row">
+            <div class="card alert alert-secondary col-12 mb-0" style="text-align: center;" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Total Submissons</h5>
+                    <p class="card-text">
+                        <%=data.total%>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="card alert alert-success col-2" style="text-align: center;" style="width: 18rem; ">
+                <div class="card-body">
+                    <h5 class="card-title">Accepted</h5>
+                    <p class="card-text">
+                        <%=data.OK%>
+                    </p>
+                </div>
+            </div>
+            <div class="card alert alert-danger col-2" style="text-align: center;" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Wrong Answer</h5>
+                    <p class="card-text">
+                        <%=data.WRONG_ANSWER%>
+                    </p>
+                </div>
+            </div>
+            <div class="card alert alert-secondary col-2" style="text-align: center;" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Time Limit</h5>
+                    <p class="card-text">
+                        <%=data.TIME_LIMIT_EXCEEDED%>
+                    </p>
+                </div>
+            </div>
+            <div class="card alert alert-secondary col-2" style="text-align: center;" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Runtime error</h5>
+                    <p class="card-text">
+                        <%=data.RUNTIME_ERROR%>
+                    </p>
+                </div>
+            </div>
+            <div class="card alert alert-secondary col-2" style="text-align: center;" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Memory Limit</h5>
+                    <p class="card-text">
+                        <%=data.MEMORY_LIMIT_EXCEEDED%>
+                    </p>
+                </div>
+            </div>
+            <div class="card alert alert-secondary col-2" style="text-align: center;" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Other</h5>
+                    <p class="card-text">
+                        <%=data.other%>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>
