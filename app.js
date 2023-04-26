@@ -25,23 +25,25 @@ app.post("/", (req, res)=>{
     https.get(url, (response)=>{
         console.log(response.statusCode);
         let data = "";
+        
         response.on("data", (chunk)=>{
             data += chunk;
         });
+
         response.on("end", ()=>{
             try {
                 const userData = JSON.parse(data);
-                //console.log(userData); 
-                const problemsStats =  {total : 0};
+                const problemsStats =  {total : 0, other : 0};
+                
+            
                 for(let i = 0; userData.result.length>i; i++){
                     var current = userData.result[i].verdict;
                     problemsStats["total"]++;
                     if (current in problemsStats) problemsStats[current]++;
-                    else  problemsStats[current] = 1;
-                      
+                    else  problemsStats[current] = 1;                      
                 }
-                console.log(problemsStats);
-                res.render("home", {total: problemsStats["total"]});
+                problemsStats.other = problemsStats.total - (problemsStats.WRONG_ANSWER + problemsStats.OK + problemsStats.TIME_LIMIT_EXCEEDED + problemsStats.MEMORY_LIMIT_EXCEEDED + problemsStats.RUNTIME_ERROR)              
+                res.render("home", {data: problemsStats});
                   
 
             } catch (error) {
@@ -54,3 +56,5 @@ app.post("/", (req, res)=>{
 app.listen(3000, (req,res)=>{
     console.log("running on port 3000");
 })
+
+
