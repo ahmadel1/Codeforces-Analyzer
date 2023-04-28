@@ -17,68 +17,32 @@
 </head>
 
 <body>
-    <div class="container m-auto my-2">
-        <div class="row">
-            <div class="card alert alert-secondary col-12 mb-0" style="text-align: center;" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Total Submissons</h5>
-                    <p class="card-text">
-                        <%=data.total%>
-                    </p>
+    <div class="statsContainer">
+        <div class="container m-auto my-2">
+            <div class="row">
+                <div class="card alert alert-primary col-12 mb-0" style="text-align: center;" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Submissons</h5>
+                        <p class="card-text">
+                            <%=data.total%>
+                        </p>
+                    </div>
                 </div>
+                <%for(let i = 0; i<6; i++){%>
+                    <div class="card alert alert-success col-2" style="text-align: center;" style="width: 18rem; ">
+                        <div class="card-body">
+                            <h5 class="card-title"><%=arr2[i]%></h5>
+                            <p class="card-text">
+                                <%=data[arr1[i]]%>
+                            </p>
+                        </div>
+                    </div>
+                <%}%>
+    
             </div>
-
-            <div class="card alert alert-success col-2" style="text-align: center;" style="width: 18rem; ">
-                <div class="card-body">
-                    <h5 class="card-title">Accepted</h5>
-                    <p class="card-text">
-                        <%=data.OK%>
-                    </p>
-                </div>
-            </div>
-            <div class="card alert alert-danger col-2" style="text-align: center;" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Wrong Answer</h5>
-                    <p class="card-text">
-                        <%=data.WRONG_ANSWER%>
-                    </p>
-                </div>
-            </div>
-            <div class="card alert alert-secondary col-2" style="text-align: center;" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Time Limit</h5>
-                    <p class="card-text">
-                        <%=data.TIME_LIMIT_EXCEEDED%>
-                    </p>
-                </div>
-            </div>
-            <div class="card alert alert-secondary col-2" style="text-align: center;" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Runtime error</h5>
-                    <p class="card-text">
-                        <%=data.RUNTIME_ERROR%>
-                    </p>
-                </div>
-            </div>
-            <div class="card alert alert-secondary col-2" style="text-align: center;" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Memory Limit</h5>
-                    <p class="card-text">
-                        <%=data.MEMORY_LIMIT_EXCEEDED%>
-                    </p>
-                </div>
-            </div>
-            <div class="card alert alert-secondary col-2" style="text-align: center;" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Other</h5>
-                    <p class="card-text">
-                        <%=data.other%>
-                    </p>
-                </div>
-            </div>
-
         </div>
     </div>
+    
     <div class = "canvasContainer">
         <canvas id="myChart"></canvas>
     </div>
@@ -103,7 +67,6 @@
             }]
           },
           options: {
-            responsive: true,
             scales: {
               y: {
                 beginAtZero: true
@@ -113,9 +76,7 @@
           }
         });
     </script>
-
-
-
+    <script src="js/script"></script>
 
 </body>
 

@@ -23,7 +23,9 @@ app.get("/", (req, res)=>{
 
 app.get("/stats" , (req,res)=>{
     if(req.body.userHandle === "") res.redirect("/")
-    res.render("stats", {data: problemsStats, xValues: xValues, yValues: yValues});
+    const arr1 = ["OK", "WRONG_ANSWER", "TIME_LIMIT_EXCEEDED", "RUNTIME_ERROR", "MEMORY_LIMIT_EXCEEDED", "other"];
+    const arr2 = ["Accepted" , "Wrong Answer", "Time Limit", "Runtime error", "Memory Limit", "Other"];
+    res.render("stats", {data: problemsStats, xValues: xValues, yValues: yValues, arr1 : arr1, arr2 : arr2});
 })
 
 app.post("/", (req, res)=>{
@@ -65,6 +67,7 @@ app.post("/", (req, res)=>{
                     if (state in problemsStats) problemsStats[state]++;
                     else  problemsStats.other ++;                      
                 }
+                console.log(problemsStats)
 
                 
                 for(let key in problemsRatings){
