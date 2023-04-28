@@ -143,5 +143,8 @@ form {
 }
 
 #navBar{
-	background-color: #F99244;  box-shadow: 0 3px 30px 0px #d3d3d3; text-align: center; justify-content: center;
+	background-color: #F99244;  
+	box-shadow: 0 3px 30px 0px #d3d3d3; 
+	text-align: center; 
+	justify-content: center;
 }

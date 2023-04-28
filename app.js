@@ -32,6 +32,8 @@ app.post("/", (req, res)=>{
     var apiKey = "";
     var handle = req.body.userHandle
     console.log(handle);
+    handle = removeWhiteSpaces(handle);
+    console.log(handle);
     const url = "https://codeforces.com/api/user.status?handle="+handle+"&from=1&count=100000000";
     const inforUrl = "https://codeforces.com/api/user.info?handle="+handle;
 
@@ -48,34 +50,19 @@ app.post("/", (req, res)=>{
         response.on("end", ()=>{
             try {
                 const userData = JSON.parse(data);
+                
+                //reset variables every new search
                 for (let key in problemsStats) {
                     problemsStats[key] = 0;
                 }
-
-                problemsRatings = []
-                xValues = []
-                yValues = []
+                problemsRatings = [];
+                xValues = [];
+                yValues = [];
                 
-                for(let i = 0; userData.result.length>i; i++){
-                    var state = userData.result[i].verdict;
-                    var rating = userData.result[i].problem.rating;
-                    problemsStats["total"]++;
-                    
-                    if(rating in problemsRatings && state==="OK" )problemsRatings[rating]++;
-                    else if(state === "OK" && !(rating in problemsRatings) )  problemsRatings[rating] = 1; 
+                generateProblemStats(userData);
+                console.log(problemsStats);
 
-                    if (state in problemsStats) problemsStats[state]++;
-                    else  problemsStats.other ++;                      
-                }
-                console.log(problemsStats)
-
-                
-                for(let key in problemsRatings){
-                    console.log(key + ": " + problemsRatings[key]);
-                    if(key === "undefined")continue;
-                    xValues.push(key);
-                    yValues.push(problemsRatings[key]);
-                }
+                generateProblemDifficulty();
 
                 res.redirect("/stats");
                    
@@ -92,4 +79,31 @@ app.listen(3000, (req,res)=>{
     console.log("running on port 3000");
 })
 
+//remove white space from begining and ending of the input
+function removeWhiteSpaces(handle){
+    return handle.trim();
+}
 
+function generateProblemStats(userData){
+    for(let i = 0; userData.result.length>i; i++){
+        var state = userData.result[i].verdict;
+        var rating = userData.result[i].problem.rating;
+        problemsStats["total"]++;
+        
+        if(rating in problemsRatings && state==="OK" )problemsRatings[rating]++;
+        else if(state === "OK" && !(rating in problemsRatings) )  problemsRatings[rating] = 1; 
+
+        if (state in problemsStats) problemsStats[state]++;
+        else  problemsStats.other ++;                      
+    }
+}
+
+function generateProblemDifficulty(){
+    for(let key in problemsRatings){
+        console.log(key + ": " + problemsRatings[key]);
+        if(key === "undefined")continue;
+        xValues.push(key);
+        yValues.push(problemsRatings[key]);
+    }
+};
+                
