@@ -64,7 +64,7 @@ form {
 	height: 3rem;
 	padding-left: 3rem;
 	border-radius: 1.5rem;
-	background: #c77d29;
+	background: #F99244;
 	cursor: pointer;
 }
 
@@ -142,3 +142,6 @@ form {
 	padding: 0;
 }
 
+#navBar{
+	background-color: #F99244;  box-shadow: 0 3px 30px 0px #d3d3d3; text-align: center; justify-content: center;
+}
