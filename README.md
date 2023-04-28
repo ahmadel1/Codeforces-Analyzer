@@ -1,6 +1,8 @@
 # Codeforces Analyzer
 This is a web application built using EJS and Node.js that analyzes Codeforces user statistics and provides various insights and visualizations.
 
+Please note that the Codeforces Analyzer website is still under construction and may be missing some features. We plan to add more features in the future, so stay tuned for updates!
+
 ## Installation
 To install and run the application, follow these steps:
 
