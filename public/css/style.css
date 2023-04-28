@@ -127,3 +127,9 @@ form {
 .search:has(input:focus)::before {
 	opacity: 1;
 }
+
+.canvasContainer{
+	width: 85%; 
+	text-align: center; 
+	margin: 0 auto;
+}

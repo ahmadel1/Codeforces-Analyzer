@@ -79,8 +79,10 @@
 
         </div>
     </div>
+    <div class = "canvasContainer">
+        <canvas id="myChart"></canvas>
+    </div>
 
-    <canvas id="myChart"></canvas>
 
     <script type="text/javascript">
 
@@ -101,6 +103,7 @@
             }]
           },
           options: {
+            responsive: true,
             scales: {
               y: {
                 beginAtZero: true
