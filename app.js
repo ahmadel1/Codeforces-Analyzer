@@ -18,7 +18,7 @@ let xValues = []
 let yValues = []
 
 app.get("/", (req, res)=>{
-    res.sendFile(__dirname + "/index.html");    
+    res.render("home");
 })
 
 app.get("/stats" , (req,res)=>{
