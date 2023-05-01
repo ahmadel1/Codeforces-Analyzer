@@ -58,7 +58,8 @@ app.post("/", (req, res)=>{
                 problemsRatings = [];
                 xValues = [];
                 yValues = [];
-                
+                console.log(userData.result[0].problem.contestId + userData.result[0].problem.index)
+                let problemID = userData.result[0].problem.contestId + userData.result[0].problem.index;
                 generateProblemStats(userData);
                 console.log(problemsStats);
 
@@ -90,11 +91,22 @@ function generateProblemStats(userData){
         var rating = userData.result[i].problem.rating;
         problemsStats["total"]++;
         
-        if(rating in problemsRatings && state==="OK" )problemsRatings[rating]++;
+        var problemID = userData.result[i].problem.contestId + userData.result[i].problem.index;
+        
+        if(rating in problemsRatings && state==="OK" && check(problemID))problemsRatings[rating]++;
         else if(state === "OK" && !(rating in problemsRatings) )  problemsRatings[rating] = 1; 
 
         if (state in problemsStats) problemsStats[state]++;
         else  problemsStats.other ++;                      
+    }
+}
+
+let checked = {};
+function check(problem){
+    if(problem in checked)return false;
+    else{
+        checked[problem] = 1;
+        return true;
     }
 }
 
