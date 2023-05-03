@@ -1,5 +1,7 @@
 <%- include("partials/header"); -%>
 <body>
+
+  </div>
     <div class="statsContainer">
         <div class="container m-auto my-2">
             <div class="row">
@@ -14,9 +16,9 @@
                 <%for(let i = 0; i<6; i++){%>
                     <div class="card alert alert-success col-2" style="text-align: center;" style="width: 18rem; ">
                         <div class="card-body">
-                            <h5 class="card-title"><%=arr2[i]%></h5>
+                            <h5 class="card-title"><%=statueTitle[i]%></h5>
                             <p class="card-text">
-                                <%=data[arr1[i]]%>
+                                <%=data[statueValue[i]]%>
                             </p>
                         </div>
                     </div>
