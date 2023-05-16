@@ -1,7 +1,12 @@
 # Codeforces Analyzer
 This is a web application built using EJS, bootstrap and Node.js that analyzes Codeforces user statistics and provides various insights and visualizations.
 
-Please note that the Codeforces Analyzer website is still under construction and may be missing some features. We plan to add more features in the future, so stay tuned for updates!
+Please note that the Codeforces Analyzer website is still under construction and may be missing some features. I plan to add more features in the future, so stay tuned for updates!
+## Motivation
+The Codeforces Analyzer website was created to address the need for more comprehensive and personalized statistics for Codeforces users. While Codeforces provides contest-related statistics, it may not cover all the specific insights and visualizations that users desire. The website aims to supplement Codeforces' statistics by offering in-depth analysis of performance and progress. It provides additional features, visualizations, and analytics tailored to users' needs, enabling them to track progress, identify areas for improvement, and compare themselves to others.
+
+## Usage 
+https://github.com/ahmadel1/Codeforces-Analyzer/assets/73443649/36523564-15be-4e91-afd6-94dd7b663e00
 
 ## Installation
 To install and run the application, follow these steps:
@@ -37,3 +42,5 @@ If you'd like to contribute to the project, please follow these guidelines:
 1. Fork the repository and create a new branch for your changes.
 2. ake your changes and commit them with clear commit messages.
 3. Submit a pull request and include a clear description of your changes.
+
+
